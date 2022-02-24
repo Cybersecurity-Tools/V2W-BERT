@@ -154,7 +154,7 @@ title={V2W-BERT: A Framework for Effective Hierarchical Multiclass Classificatio
 
 Feel free to [email us](mailto:das90@purdue.edu) for additional resources.
 If you notice anything unexpected, please open an [issue](https://github.com/Cybersecurity-Tools/V2W-BERT) and let us know.
-If you have any questions or are missing a specific feature, feel free [to discuss them with us]().
+If you have any questions or are missing a specific feature, feel free [to discuss them with us](https://github.com/Cybersecurity-Tools/V2W-BERT/discussions/).
 
 
 ## Copyright
