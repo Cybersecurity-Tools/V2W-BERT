@@ -77,21 +77,23 @@ pip install lxml
 
 ## Running
 
-###### Prepare dataset 
+#### Prepare dataset 
 
 - Run ```PrepareDataset.ipynb``` notebook for download and prepare dataset
 
 ```
 python PrepareDataset.py --dir='Dataset' --from_year=2020 --to_year=2021 --from_train_year=1990 --to_train_year=2020 --from_test_year=2021 --to_test_year=2021 --from_val_year=2022 --to_test_year=2022
 ```
-###### Pretraining dataset 
+####  Pretraining dataset 
 
 -- Pretraining ```V2WBERT-Pretraining.ipynb```
 
 ```
 python V2WBERT-Pretraining.py --pretrained='distilbert-base-uncased' --num_gpus=2 --parallel_mode='dp' --epochs=30 --batch_size=16 --refresh_rate=200
 ```
+---
 
+###### Other options 
 - Running 'dummy' dataset to test the overall process
 ```
 python V2WBERT-Pretraining.py --pretrained='distilbert-base-uncased' --num_gpus=2 --parallel_mode='dp' --epochs=30 --batch_size=16 --refresh_rate=200 --rand_dataset='dummy'
@@ -113,13 +115,15 @@ python V2WBERT-Pretraining.py --pretrained='distilbert-base-uncased' --num_gpus=
 python V2WBERT-Pretraining.py --pretrained='distilbert-base-uncased' --num_gpus=2 --parallel_mode='ddp' --epochs=30 --batch_size=16 --refresh_rate=200 --rand_dataset='random'
 ```
 
-###### Link Prediction
+#### Link Prediction
 
 - Link Prediciton ```V2WBERT-LinkPrediction.ipynb```
 
 ```
 python V2WBERT-LinkPrediction.py --pretrained='distilbert-base-uncased' --use_pretrained=True --use_rd=False --checkpointing=False --rand_dataset='temporal'  --performance_mode=False --neg_link=128  --epoch=25 --nodes=1 --num_gpus=2 --batch_size=64
 ```
+
+###### Other options
 
 - other dataset
 ```
