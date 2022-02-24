@@ -96,23 +96,23 @@ python V2WBERT-Pretraining.py --pretrained='distilbert-base-uncased' --num_gpus=
 ###### Other options 
 - Running 'dummy' dataset to test the overall process
 ```
-python V2WBERT-Pretraining.py --pretrained='distilbert-base-uncased' --num_gpus=2 --parallel_mode='dp' --epochs=30 --batch_size=16 --refresh_rate=200 --rand_dataset='dummy'
+python V2W-BERT-Pretraining.py --pretrained='distilbert-base-uncased' --num_gpus=2 --parallel_mode='dp' --epochs=30 --batch_size=16 --refresh_rate=200 --rand_dataset='dummy'
 ```
 
 - Temporal dataset splits data by year
 ```
-python V2WBERT-Pretraining.py --pretrained='distilbert-base-uncased' --num_gpus=2 --parallel_mode='dp' --epochs=30 --batch_size=16 --refresh_rate=200 --rand_dataset='temporal'
+python V2W-BERT-Pretraining.py --pretrained='distilbert-base-uncased' --num_gpus=2 --parallel_mode='dp' --epochs=30 --batch_size=16 --refresh_rate=200 --rand_dataset='temporal'
 ```
 
 - Random dataset splits data from each category
 ```
-python V2WBERT-Pretraining.py --pretrained='distilbert-base-uncased' --num_gpus=2 --parallel_mode='dp' --epochs=30 --batch_size=16 --refresh_rate=200 --rand_dataset='random'
+python V2W-BERT-Pretraining.py --pretrained='distilbert-base-uncased' --num_gpus=2 --parallel_mode='dp' --epochs=30 --batch_size=16 --refresh_rate=200 --rand_dataset='random'
 ```
 
 - To run in distributed dataparallel mode
 
 ```
-python V2WBERT-Pretraining.py --pretrained='distilbert-base-uncased' --num_gpus=2 --parallel_mode='ddp' --epochs=30 --batch_size=16 --refresh_rate=200 --rand_dataset='random'
+python V2W-BERT-Pretraining.py --pretrained='distilbert-base-uncased' --num_gpus=2 --parallel_mode='ddp' --epochs=30 --batch_size=16 --refresh_rate=200 --rand_dataset='random'
 ```
 
 #### Link Prediction
@@ -120,18 +120,18 @@ python V2WBERT-Pretraining.py --pretrained='distilbert-base-uncased' --num_gpus=
 - Link Prediciton ```V2WBERT-LinkPrediction.ipynb```
 
 ```
-python V2WBERT-LinkPrediction.py --pretrained='distilbert-base-uncased' --use_pretrained=True --use_rd=False --checkpointing=False --rand_dataset='temporal'  --performance_mode=False --neg_link=128  --epoch=25 --nodes=1 --num_gpus=2 --batch_size=64
+python V2W-BERT-LinkPrediction.py --pretrained='distilbert-base-uncased' --use_pretrained=True --use_rd=False --checkpointing=False --rand_dataset='temporal'  --performance_mode=False --neg_link=128  --epoch=25 --nodes=1 --num_gpus=2 --batch_size=64
 ```
 
 ###### Other options
 
 - other dataset
 ```
-python V2WBERT-LinkPrediction.py --pretrained='distilbert-base-uncased' --use_pretrained=True --use_rd=False --checkpointing=False --rand_dataset='random'  --performance_mode=False --neg_link=128  --epoch=25 --nodes=1 --num_gpus=2 --batch_size=64
+python V2W-BERT-LinkPrediction.py --pretrained='distilbert-base-uncased' --use_pretrained=True --use_rd=False --checkpointing=False --rand_dataset='random'  --performance_mode=False --neg_link=128  --epoch=25 --nodes=1 --num_gpus=2 --batch_size=64
 ```
 - Running 'dummy' dataset to test the overall process
 ```
-python V2WBERT-LinkPrediction.py --pretrained='distilbert-base-uncased' --use_pretrained=True --use_rd=False --checkpointing=False --rand_dataset='dummy'  --performance_mode=False --neg_link=128  --epoch=25 --nodes=1 --num_gpus=2 --batch_size=64
+python V2W-BERT-LinkPrediction.py --pretrained='distilbert-base-uncased' --use_pretrained=True --use_rd=False --checkpointing=False --rand_dataset='dummy'  --performance_mode=False --neg_link=128  --epoch=25 --nodes=1 --num_gpus=2 --batch_size=64
 ```
 
 
