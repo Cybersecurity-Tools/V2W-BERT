@@ -26,10 +26,10 @@ This material was prepared as an account of work sponsored by an agency of the U
 Reference herein to any specific commercial product, process, or service by trade name, trademark, manufacturer, or otherwise does not necessarily constitute or imply its endorsement, recommendation, or favoring by the United States Government or any agency thereof, or Battelle Memorial Institute. The views and opinions of authors expressed herein do not necessarily state or reflect those of the United States Government or any agency thereof.
 
 <p align="center">
-    PACIFIC NORTHWEST NATIONAL LABORATORY
-	<i>operated by</i>
-	BATTELLE
-	<i>for the</i>
-	UNITED STATES DEPARTMENT OF ENERGY
+    PACIFIC NORTHWEST NATIONAL LABORATORY</br>
+	<i>operated by</i></br>
+	BATTELLE</br>
+	<i>for the</i></br>
+	UNITED STATES DEPARTMENT OF ENERGY</br>
 	<i>under Contract DE-AC05-76RL01830<i/>
 </p>
