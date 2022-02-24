@@ -9,14 +9,14 @@ Instructions for V2W-BERT
 
 Dataset: [https://drive.google.com/drive/folders/10E6nOXhRERhAmRVWla5i99jeUGWmI-Xl?usp=sharing](https://drive.google.com/drive/folders/10E6nOXhRERhAmRVWla5i99jeUGWmI-Xl?usp=sharing)
 
-Download and extract NVD dataset and keep it in the SambaNova directory.
+Download and extract NVD dataset and keep it in the ```Dataset/NVD/Processed``` directory. Or execute ```PrepareDataset.ipynb``` or ```PrepareDataset.py``` to download and prepare dataset.
 
-### Managing Virtual environment if Anaconda is available in the system
+### Create or manage virtual environment if Anaconda is available in the system
 Check your system if Anaconda module is available. If anaconda is not available install packages in the python base. If anaconda is available, then create a virtual enviroment to manage python packages.  
 
 1. Load Module: ```load module anaconda/version_xxx```
-2. Create virtual environment: ```conda create -n sambanova python=3.7```. Here python version 3.7 is considered.
-3. Activate virtual environement: ```conda activate sambanova``` or ```source activate sambanova```
+2. Create virtual environment: ```conda create -n v2wbert python=3.7```. Here python version 3.7 is considered.
+3. Activate virtual environement: ```conda activate v2wbert``` or ```source activate v2wbert```
 
 Other necessary commands for managing enviroment can be found here : [https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands)
 
@@ -77,23 +77,60 @@ pip install lxml
 
 ## Running
 
--- Pretraining ```1-V2W-Pretraining.ipynb```
+###### Prepare dataset 
+
+- Run ```PrepareDataset.ipynb``` notebook for download and prepare dataset
 
 ```
-python 1-V2W-Pretraining.py --pretrained='distilbert-base-uncased' --num_gpus="1, 2, 3, 4, 5, 6, 7" --parallel_mode='ddp' --epochs=30 --batch_size=16 --refresh_rate=200
+python PrepareDataset.py --dir='Dataset' --from_year=2020 --to_year=2021 --from_train_year=1990 --to_train_year=2020 --from_test_year=2021 --to_test_year=2021 --from_val_year=2022 --to_test_year=2022
+```
+###### Pretraining dataset 
+
+-- Pretraining ```V2WBERT-Pretraining.ipynb```
+
+```
+python V2WBERT-Pretraining.py --pretrained='distilbert-base-uncased' --num_gpus=2 --parallel_mode='dp' --epochs=30 --batch_size=16 --refresh_rate=200
 ```
 
--- Link Prediciton ```2-V2W-Principal.ipynb```
+- Running 'dummy' dataset to test the overall process
+```
+python V2WBERT-Pretraining.py --pretrained='distilbert-base-uncased' --num_gpus=2 --parallel_mode='dp' --epochs=30 --batch_size=16 --refresh_rate=200 --rand_dataset='dummy'
+```
 
-```python 2-V2W-Principal.py --pretrained='distilbert-base-uncased' --use_pretrained=True --use_rd=False --checkpointing=True --rand_dataset='dummy'  --performance_mode=False --neg_link=128  --epoch=50 --nodes=1 --num_gpus="1,2,3,4,5,6,7" --batch_size=64```
+- Temporal dataset splits data by year
+```
+python V2WBERT-Pretraining.py --pretrained='distilbert-base-uncased' --num_gpus=2 --parallel_mode='dp' --epochs=30 --batch_size=16 --refresh_rate=200 --rand_dataset='temporal'
+```
 
--- Save Transformation
+- Random dataset splits data from each category
+```
+python V2WBERT-Pretraining.py --pretrained='distilbert-base-uncased' --num_gpus=2 --parallel_mode='dp' --epochs=30 --batch_size=16 --refresh_rate=200 --rand_dataset='random'
+```
 
-```3-V2W-Principal-Transform.ipynb```
+- To run in distributed dataparallel mode
 
--- Load and view transformation
+```
+python V2WBERT-Pretraining.py --pretrained='distilbert-base-uncased' --num_gpus=2 --parallel_mode='ddp' --epochs=30 --batch_size=16 --refresh_rate=200 --rand_dataset='random'
+```
 
-```4-V2W-view-transformation.ipynb```
+###### Link Prediction
+
+- Link Prediciton ```V2WBERT-LinkPrediction.ipynb```
+
+```
+python V2WBERT-LinkPrediction.py --pretrained='distilbert-base-uncased' --use_pretrained=True --use_rd=False --checkpointing=False --rand_dataset='temporal'  --performance_mode=False --neg_link=128  --epoch=25 --nodes=1 --num_gpus=2 --batch_size=64
+```
+
+- other dataset
+```
+python V2WBERT-LinkPrediction.py --pretrained='distilbert-base-uncased' --use_pretrained=True --use_rd=False --checkpointing=False --rand_dataset='random'  --performance_mode=False --neg_link=128  --epoch=25 --nodes=1 --num_gpus=2 --batch_size=64
+```
+- Running 'dummy' dataset to test the overall process
+```
+python V2WBERT-LinkPrediction.py --pretrained='distilbert-base-uncased' --use_pretrained=True --use_rd=False --checkpointing=False --rand_dataset='dummy'  --performance_mode=False --neg_link=128  --epoch=25 --nodes=1 --num_gpus=2 --batch_size=64
+```
+
+
 
 
 ## Cite
