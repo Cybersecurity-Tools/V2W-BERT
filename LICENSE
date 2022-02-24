@@ -1,6 +1,20 @@
 BSD 2-Clause License
 
-Copyright (c) 2022, Cybersecurity-Tools
+// ***********************************************************************
+
+//
+
+//        V2W-BERT: A Python library for vulnerability classification
+
+//               Siddhartha Das (das90@purdue.edu) : Purdue University
+
+//               Mahantesh Halappanavar (hala@pnnl.gov): Pacific Northwest National Laboratory    
+
+// ***********************************************************************
+
+//
+
+Copyright © 2022, Battelle Memorial Institute
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
